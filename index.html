@@ -66,7 +66,7 @@
 
         function seg() {
             secShortBreak++
-            if (secShortBreak == 2) {
+            if (secShortBreak == 60) {
                 secShortBreak = 0
                 shortBreak()
             }
@@ -79,7 +79,7 @@
             if (shortbreak == 0) {
 
                 clearInterval(cronShortBreak)
-                playAlert()
+                alert('O descanso acabou !!!')
                 shortbreak = 5
             }
 
@@ -127,7 +127,7 @@
             longbreak--
             if (longbreak == 0) {
                 clearInterval(cronLongBreak)
-                playAlert()
+                alert('Hora de descansar !!!')
                 longbreak = 25
             }
             document.getElementById("longbreak").innerHTML = returnZero(longbreak)
