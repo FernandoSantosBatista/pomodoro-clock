@@ -23,9 +23,9 @@
         </div>
 
         <div class="text-center" style="margin-top:20px">
-            <button type="button" class="btn btn-outline-primary" onclick="startLongBreak ()"> Iniciar </button>
-            <button type="button" class="btn btn-outline-secondary" onclick="pauseLongBreak ()"> Pausar </button>
-            <button type="button" class="btn btn-outline-primary" onclick="resetLongBreak ()"> Resetar </button>
+            <button type="button" class="btn btn-outline-primary" id="start-long-break"> Iniciar </button>
+            
+            <button type="button" class="btn btn-outline-secondary" onclick="resetLongBreak ()"> Resetar </button>
 
         </div>
         <hr>
@@ -34,9 +34,10 @@
         <span class="display-1" id="secShortBreak">00</span>
 
         <div class="text-center" style="margin-top:20px">
-            <button type="button" class="btn btn-outline-primary" onclick="start()"> Iniciar </button>
-            <button type="button" class="btn btn-outline-secondary" onclick="pause()"> Pausar </button>
-            <button type="button" class="btn btn-outline-primary" onclick="reset()"> Resetar </button>
+            <button type="button" class="btn btn-outline-primary" id="start-pause"> Iniciar </button>
+            <button type="button" class="btn btn-outline-secondary" onclick="reset()"> Resetar </button>
+            
+            
         </div>
         <hr>
         <br>
@@ -66,7 +67,7 @@
 
         function seg() {
             secShortBreak++
-            if (secShortBreak == 60) {
+            if (secShortBreak == 2) {
                 secShortBreak = 0
                 shortBreak()
             }
@@ -79,7 +80,7 @@
             if (shortbreak == 0) {
 
                 clearInterval(cronShortBreak)
-playAlert()
+                playAlert()
                 shortbreak = 5
             }
 
@@ -93,7 +94,6 @@ playAlert()
             document.getElementById('secShortBreak').innerText = '00';
             document.getElementById('shortbreak').innerText = '05';
         }
-
 
         // Long Break 
 
@@ -127,7 +127,7 @@ playAlert()
             longbreak--
             if (longbreak == 0) {
                 clearInterval(cronLongBreak)
-              playAlert()
+                playAlert()
                 longbreak = 25
             }
             document.getElementById("longbreak").innerHTML = returnZero(longbreak)
@@ -150,20 +150,38 @@ playAlert()
             }
         }
 
-function playAlert() {
-  // cria o objeto de áudio
-  let audio = new Audio('01.mp3');
-  // reproduz o áudio
-  audio.play();
-  // exibe o alerta
-  console.log(audio);
-}
+const button = document.getElementById('start-pause');
 
-// chama a função para reproduzir o alerta com áudio
-playAlert();
+let startPause = false;
+
+button.addEventListener('click', function() {
+  if (startPause) {
+    button.textContent = 'Iniciar';
+    pause()
+  } else {
+    button.textContent = 'Pausar';
+     start()
+  }
+  
+  startPause = !startPause;
+});
 
 
+const btnLongBreak = document.getElementById('start-long-break');
 
+let startBreak = false;
+
+btnLongBreak.addEventListener('click', function() {
+  if (startBreak) {
+    btnLongBreak.textContent = 'Iniciar';
+    pauseLongBreak()
+  } else {
+    btnLongBreak.textContent = 'Pausar';
+     startLongBreak()
+  }
+  
+  startBreak = !startBreak;
+});
     </script>
 </body>
 
