@@ -150,27 +150,17 @@
             }
         }
 
-        function playAlert() {
-            if ("Notification" in window) {
-  // Solicita permissão para enviar notificações
-  Notification.requestPermission().then(function (permission) {
-    if (permission === "granted") {
-      // Cria a notificação
-      var notification = new Notification("Nova mensagem recebida", {
-        body: "Você tem uma nova mensagem!",
-      });
-      
-      // Cria o elemento de áudio
-      var audio = new Audio("01.mp3");
-      
-      // Toca o som quando a notificação é clicada
-      notification.onclick = function() {
-        audio.play();
-      };
-    }
-  });
+function playAlert() {
+  // cria o objeto de áudio
+  let audio = new Audio('01.mp3');
+  // reproduz o áudio
+  audio.play();
+  // exibe o alerta
+  console.log(audio);
 }
-        }
+
+// chama a função para reproduzir o alerta com áudio
+playAlert();
 
 
 
