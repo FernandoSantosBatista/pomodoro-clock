@@ -79,6 +79,7 @@
             if (shortbreak == 0) {
 
                 clearInterval(cronShortBreak)
+playAlert()
                 alert('O descanso acabou !!!')
                 shortbreak = 5
             }
@@ -127,6 +128,7 @@
             longbreak--
             if (longbreak == 0) {
                 clearInterval(cronLongBreak)
+              playAlert()
                 alert('Hora de descansar !!!')
                 longbreak = 25
             }
