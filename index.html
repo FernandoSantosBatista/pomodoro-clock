@@ -80,7 +80,8 @@
             if (shortbreak == 0) {
 
                 clearInterval(cronShortBreak)
-                playAlert()
+                alerta("O tempo acabou");
+    setTimeout(playAlert, 100);
                 shortbreak = 5
             }
 
